@@ -111,11 +111,15 @@ func searchRangeStdlib(nums []int, target int) []int {
 }
 
 // searchRangeLinear 解法四：顺序遍历（对照用，不满足 O(log n) 要求）
-// 从左扫到第一个 target 记为 l，继续扫记录最后一个 target 为 r。
+// 利用数组非递减的性质：一旦遇到比 target 大的元素，后面不可能再有 target，
+// 直接提前返回，减少不必要的遍历（最坏仍是 O(n)，如全部等于 target）。
 // 时间复杂度 O(n)，空间复杂度 O(1)。
 func searchRangeLinear(nums []int, target int) []int {
 	l, r := -1, -1
 	for i, x := range nums {
+		if x > target {
+			return []int{l, r}
+		}
 		if x == target {
 			if l == -1 {
 				l = i
