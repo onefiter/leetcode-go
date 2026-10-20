@@ -5,6 +5,11 @@ import (
 	"testing"
 )
 
+var solutions = map[string]func([]int, int) int{
+	"removeElement":            removeElement,
+	"removeElementEnumeration": removeElementEnumeration,
+}
+
 func TestRemoveElement(t *testing.T) {
 	tests := []struct {
 		nums []int
@@ -15,13 +20,15 @@ func TestRemoveElement(t *testing.T) {
 		{[]int{0, 1, 2, 2, 3, 0, 4, 2}, 2, []int{0, 0, 1, 3, 4}},
 		{[]int{}, 1, []int{}},
 	}
-	for _, tt := range tests {
-		nums := slices.Clone(tt.nums)
-		k := removeElement(nums, tt.val)
-		got := slices.Clone(nums[:k])
-		slices.Sort(got)
-		if !slices.Equal(got, tt.want) {
-			t.Errorf("removeElement(%v, %d) kept %v, want %v", tt.nums, tt.val, got, tt.want)
+	for name, fn := range solutions {
+		for _, tt := range tests {
+			nums := slices.Clone(tt.nums)
+			k := fn(nums, tt.val)
+			got := slices.Clone(nums[:k])
+			slices.Sort(got)
+			if !slices.Equal(got, tt.want) {
+				t.Errorf("%s(%v, %d) kept %v, want %v", name, tt.nums, tt.val, got, tt.want)
+			}
 		}
 	}
 }

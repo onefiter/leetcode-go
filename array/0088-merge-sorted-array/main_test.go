@@ -5,6 +5,11 @@ import (
 	"testing"
 )
 
+var solutions = map[string]func([]int, int, []int, int){
+	"merge":            merge,
+	"mergeEnumeration": mergeEnumeration,
+}
+
 func TestMerge(t *testing.T) {
 	tests := []struct {
 		nums1 []int
@@ -17,11 +22,13 @@ func TestMerge(t *testing.T) {
 		{[]int{1}, 1, []int{}, 0, []int{1}},
 		{[]int{0}, 0, []int{1}, 1, []int{1}},
 	}
-	for _, tt := range tests {
-		got := slices.Clone(tt.nums1)
-		merge(got, tt.m, tt.nums2, tt.n)
-		if !slices.Equal(got, tt.want) {
-			t.Errorf("merge(%v, %d, %v, %d) = %v, want %v", tt.nums1, tt.m, tt.nums2, tt.n, got, tt.want)
+	for name, fn := range solutions {
+		for _, tt := range tests {
+			got := slices.Clone(tt.nums1)
+			fn(got, tt.m, tt.nums2, tt.n)
+			if !slices.Equal(got, tt.want) {
+				t.Errorf("%s(%v, %d, %v, %d) = %v, want %v", name, tt.nums1, tt.m, tt.nums2, tt.n, got, tt.want)
+			}
 		}
 	}
 }

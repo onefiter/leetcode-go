@@ -3,6 +3,7 @@ package searchinsertposition
 import "slices"
 
 // 35. 搜索插入位置
+// https://leetcode.cn/problems/search-insert-position/
 // 给定一个「升序排列」且「元素互不相同」的整数数组 nums 和一个目标值 target，
 // 如果 target 在数组里，返回它的下标；如果不在，返回它按顺序插入后应该在的下标。
 // 例如 nums=[1,3,5,6], target=5 -> 2；target=2 -> 1；target=7 -> 4。

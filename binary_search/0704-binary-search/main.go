@@ -3,6 +3,7 @@ package binarysearch
 import "slices"
 
 // 704. 二分查找
+// https://leetcode.cn/problems/binary-search/
 // 给定升序且元素不重复的整数数组 nums 和目标值 target，存在则返回下标，否则返回 -1。
 //
 // 解题思路：
