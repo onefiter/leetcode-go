@@ -3,10 +3,10 @@ package searchinsertposition
 import "testing"
 
 var solutions = map[string]func([]int, int) int{
-	"searchInsert":          searchInsert,
-	"searchInsertBinary":    searchInsertBinary,
-	"searchInsertHalfOpen":  searchInsertHalfOpen,
-	"searchInsertStdlib":    searchInsertStdlib,
+	"searchInsert":         searchInsert,
+	"searchInsertBinary":   searchInsertBinary,
+	"searchInsertHalfOpen": searchInsertHalfOpen,
+	"searchInsertStdlib":   searchInsertStdlib,
 }
 
 func TestSearchInsert(t *testing.T) {

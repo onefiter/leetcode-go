@@ -18,6 +18,7 @@ import "slices"
 // 从前往后找第一个 nums[i] >= target 的位置：
 //   - 一旦遇到 nums[i] >= target，i 就是答案（要么相等，要么是插入点）；
 //   - 如果整个数组都比 target 小，循环结束后返回 len(nums)。
+//
 // 时间复杂度 O(n)：最坏情况要看完整个数组。
 // 空间复杂度 O(1)：只用了几个变量。
 func searchInsert(nums []int, target int) int {
@@ -35,6 +36,7 @@ func searchInsert(nums []int, target int) int {
 // 为什么是 left？循环结束条件是 left > right，此时：
 //   - left 左边的元素都 < target（因为每次 nums[mid] < target 才让 left 右移）；
 //   - right 右边的元素都 >= target。
+//
 // 所以 left 就是第一个 >= target 的下标，即插入位置。
 // 时间复杂度 O(log n)：每轮区间缩小一半。
 // 空间复杂度 O(1)。
@@ -57,6 +59,7 @@ func searchInsertBinary(nums []int, target int) int {
 // 和上一版同一个思路，只是 right 表示「不包含」的边界，所以：
 //   - 循环条件是 left < right（当 left == right 时区间为空）；
 //   - 收缩右边界时直接 right = mid（因为 mid 本来就不在下一轮区间里）。
+//
 // 区间为空时 left 就是插入位置，无需再讨论 target 是否命中。
 // 时间复杂度 O(log n)，空间复杂度 O(1)。
 func searchInsertHalfOpen(nums []int, target int) int {

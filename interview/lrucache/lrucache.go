@@ -21,7 +21,7 @@ type entry struct {
 type LRUCache struct {
 	capacity int
 	mu       sync.Mutex
-	ll       *list.List            // 双向链表，front 最新，back 最旧
+	ll       *list.List // 双向链表，front 最新，back 最旧
 	items    map[string]*list.Element
 }
 
