@@ -1,7 +1,11 @@
 # leetcode-go
+
+刷题计划与完整题单（每题链接到对应代码）见 [STUDY_PLAN.md](STUDY_PLAN.md)。
+
 ```text
 leetcode-go/
-├── README.md               # 刷题总记录：刷了哪些题、进度、错题标记
+├── README.md               # 目录说明与整体解题思路
+├── STUDY_PLAN.md           # 300 题一周冲刺计划与题单
 ├── go.mod                  # go mod init leetcode-go 初始化
 ├── go.sum
 ├── template/               # ✅ 公共模板包（最重要！树状数组、二分、并查集都放这里）
